@@ -10,20 +10,20 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-
+////***********+connecting to the DB with mongoose******///////////////
 mongoose.connect("mongodb://localhost:27017/favoritesDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-///Schema
+///*******************Schema**************/////////
 const itemsSchema = {
   name: String,
   price: String,
   imgURL: String
 }
-///model
+///******************model********************//////////////
 const Item = mongoose.model("Item", itemsSchema);
-////Routes
+////***************Routes*******************////////////////
 app.get("/", function(req, res) {
   res.render("home");
 });
