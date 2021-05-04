@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="https://kit.fontawesome.com/ee3bd84ca1.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row buscador">
+      <div class="col-lg-10">
+        <form class="in-line" action="/products" method="post">
+          <div class="input-group mb-3">
+            <input type="text" name="item" class="form-control" placeholder="Buscar productos" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-primary" type="submit" id="button-addon2">Buscar</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-2">
+        <form class="" action="/favoritos" method="get">
+          <button class="btn btn-success" type="submit" id="button-addon2">Favoritos</button>
+        </form>
+      </div>
+    </div>
+    <h5>Resultados</h5>
+    <table class="table table-hover ">
+      <thead>
+        <tr>
+          <th scope="col">Imagen</th>
+          <th scope="col">Producto</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Favoritos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% productsDataEjs.results.forEach(function(product){ %>
+          <tr>
+            <th scope="row"><img src="<%= product.thumbnail %>" alt="" class="img"></th>
+            <td><%= product.title %></td>
+            <td>$<%= product.price %></td>
+            <form class="" action="/add" method="post">
+              <input type="hidden" name="itemName" value="<%= product.title %>" />
+              <input type="hidden" name="itemPrice" value="<%= product.price %>" />
+              <input type="hidden" name="itemImg" value="<%= product.thumbnail %>" />
+              <td>
+                  <button class="btn btn-success" type="submit" name="submit" id="button-addon2">Añadir</button>
+              </td>
+            </form>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
