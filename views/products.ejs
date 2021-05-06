@@ -17,7 +17,7 @@
       </div>
     </div>
     <h5>Resultados</h5>
-    <table class="table table-hover ">
+    <table class="table table-hover" id="myTable">
       <thead>
         <tr>
           <th scope="col">Imagen</th>
@@ -28,22 +28,31 @@
       </thead>
       <tbody>
         <% productsDataEjs.results.forEach(function(product){ %>
-          <tr>
-            <th scope="row"><img src="<%= product.thumbnail %>" alt="" class="img"></th>
-            <td><%= product.title %></td>
-            <td>$<%= product.price %></td>
-            <form class="" action="/add" method="post">
-              <input type="hidden" name="itemName" value="<%= product.title %>" />
-              <input type="hidden" name="itemPrice" value="<%= product.price %>" />
-              <input type="hidden" name="itemImg" value="<%= product.thumbnail %>" />
-              <td>
-                  <button class="btn btn-success" type="submit" name="submit" id="button-addon2">Añadir</button>
-              </td>
-            </form>
-          </tr>
+        <tr>
+          <th scope="row"><img src="<%= product.thumbnail %>" alt="" class="img"></th>
+          <td>
+            <%= product.title %>
+          </td>
+          <td>$
+            <%= product.price %>
+          </td>
+          <form class="" action="/add" method="post">
+            <input type="hidden" name="itemName" value="<%= product.title %>" />
+            <input type="hidden" name="itemPrice" value="<%= product.price %>" />
+            <input type="hidden" name="itemImg" value="<%= product.thumbnail %>" />
+            <td>
+              <button class="btn btn-success" type="submit" name="submit" id="button-addon2">Añadir</button>
+            </td>
+          </form>
+        </tr>
         <% }); %>
       </tbody>
     </table>
   </div>
-  
-<%- include('partials/footer') %>
+
+  <script>
+    $(document).ready(function() {
+      $('#myTable').DataTable();
+    });
+  </script>
+  <%- include('partials/footer') %>

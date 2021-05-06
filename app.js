@@ -63,7 +63,7 @@ app.post("/products", function(req, res) {
   });
 });
 ///////****************Add favorite product**************////////////
-app.post("/add", function(req, res){
+app.post("/add", function(req, res) {
   const name = req.body.itemName;
   const precio = req.body.itemPrice;
   const imagen = req.body.itemImg;
@@ -78,17 +78,17 @@ app.post("/add", function(req, res){
   res.redirect("/favoritos");
 });
 //////*************Delete product from favorite list**********//////////////
-app.post("/delete", function(req, res){
+app.post("/delete", function(req, res) {
   console.log(req.body.id);
   const checkedItemId = req.body.id;
-   //eliminamos el item de la base de datos
-   Item.findByIdAndRemove(checkedItemId, function(err){
-     if(!err){
-       console.log("Succesfully deleted");
-       //redireccionamos para que se reflejen los cambios
-       res.redirect("/favoritos");
-     }
-   });
+  //eliminamos el item de la base de datos
+  Item.findByIdAndRemove(checkedItemId, function(err) {
+    if (!err) {
+      console.log("Succesfully deleted");
+      //redireccionamos para que se reflejen los cambios
+      res.redirect("/favoritos");
+    }
+  });
 });
 
 app.listen(3000, () => {

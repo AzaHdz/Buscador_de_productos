@@ -1,22 +1,26 @@
-body{
+body {
   font-family: 'Montserrat-bold';
 }
-.container-fluid{
+
+.container-fluid {
   padding: 5% 15%;
 }
 
-.tilte{
+.tilte {
   font-family: 'Montserrat-bold';
   font-size: 3.5rem;
   text-align: center;
 }
- .home{
-   padding: 15% 15%;
- }
- .buscador{
-   padding-bottom: 20px;
- }
- .img{
-   width: 100px;
-   height: 100px;
- }
+
+.home {
+  padding: 15% 15%;
+}
+
+.buscador {
+  padding-bottom: 20px;
+}
+
+.img {
+  width: 100px;
+  height: 100px;
+}
